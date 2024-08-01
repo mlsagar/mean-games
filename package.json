@@ -1,0 +1,30 @@
+{
+  "name": "mean-games",
+  "version": "1.0.0",
+  "description": "Course Example Project to lear",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mlsagar/mean-games.git"
+  },
+  "keywords": [
+    "MongoDB",
+    "Express",
+    "Angular",
+    "NodeJs"
+  ],
+  "author": "Sagar Maharjan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mlsagar/mean-games/issues"
+  },
+  "homepage": "https://github.com/mlsagar/mean-games#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.5.2"
+  }
+}
