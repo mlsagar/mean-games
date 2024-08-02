@@ -21,13 +21,16 @@ const reviewSchema = new mongoose.Schema({
         type: Number,
         min: 1,
         max: 5,
-        default: 1
+        required: true
     },
     review: {
         type: String,
         required: true
     },
-    postDate: Date
+    postDate: {
+        type: Date,
+        default: Date.now
+    }
 })
 
 const gameSchema = mongoose.Schema({
