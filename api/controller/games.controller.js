@@ -47,6 +47,7 @@ const allGames = function (request, response) {
 }
 
 const addGame = function (request, response) {
+    // console.log(request.body);
     const responseCollection = _generateResponseCollection();
     const newGame = {
         title: request.body.title,

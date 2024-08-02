@@ -1,0 +1,47 @@
+<form [formGroup]="gameForm" (ngSubmit)="createGame()" *ngIf="!message">
+    <div>
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" formControlName="title">
+    </div>
+    <br>    
+    <div>
+        <label for="year">Year</label>
+        <input type="text" name="year" id="year" formControlName="year">
+    </div>
+    <br>
+    <div>
+        <label for="rate">Rate</label>
+        <input type="text" name="rate" id="rate" formControlName="rate">
+    </div>
+    <br>
+    <div>
+        <label for="price">Price</label>
+        <input type="text" name="price" id="price" formControlName="price">
+    </div>
+    <br>
+    <div>
+        <label for="minPlayers">Minimum Players</label>
+        <input type="text" name="minPlayers" id="minPlayers" formControlName="minPlayers">
+    </div>
+    <br>
+    <div>
+        <label for="maxPlayers">Maximum Players</label>
+        <input type="text" name="maxPlayers" id="maxPlayers" formControlName="maxPlayers">
+    </div>
+    <br>
+    <div>
+        <label for="minAge">Minimum Age</label>
+        <input type="text" name="minAge" id="minAge" formControlName="minAge">
+    </div>
+    <br>
+    <div>
+        <label for="designers">Designers</label>
+        <input type="text" name="designers" id="designers" formControlName="designers">
+    </div>
+    <br>
+    <button type="submit">Submit</button>
+</form>
+
+<div *ngIf="message">
+    <h4>{{message}}</h4>
+</div>
