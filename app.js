@@ -12,6 +12,10 @@ application.use(express.static(path.join(__dirname, "public")));
 
 application.use(express.json());
 application.use(express.urlencoded({extended: true}))
+application.use(process.env.URL_API, function(request, response, next){
+    response.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+    next();
+})
 application.use(process.env.URL_API, routes);
 
 application.listen(port, console.log("Application listening at " + port));
