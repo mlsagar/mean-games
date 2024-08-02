@@ -1,4 +1,3 @@
-const { Http2ServerResponse } = require("http2");
 const mongoose = require("mongoose");
 const Game = mongoose.model(process.env.GAME_MODEL);
 
@@ -204,8 +203,6 @@ const removeGame = function (request, response) {
         _sendRequest(response, responseCollection);
     })
 }
-
-
 const _sendRequest = function (response, responseCollection) {
     return response.status(responseCollection.status).json(responseCollection.message);
 }
