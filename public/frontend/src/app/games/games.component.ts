@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { GamesService } from '../games.service';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 export class Game {
   #_id!: string;
@@ -13,7 +16,7 @@ export class Game {
   get title() { return this.#title; }
   set title(title: string) { this.#title = title; }
   get year() { return this.#year; }
-  get rate() { return this.#rate; }  
+  get rate() { return this.#rate; }
   get price() { return this.#price; }
   set price(price: number) { this.#price = price; }
   get minPlayers() { return this.#minPlayers; }
@@ -30,10 +33,25 @@ export class Game {
 @Component({
   selector: 'app-games',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, RouterLink
+  ],
   templateUrl: './games.component.html',
   styleUrl: './games.component.css'
 })
-export class GamesComponent {
+export class GamesComponent implements OnInit{
+  games: Game[] = [];
+
+  constructor(
+    private gamesService: GamesService
+  ) {}
+
+  ngOnInit(): void {
+    this.gamesService.allGames.subscribe(response => {
+      this.games = response;
+    }, (error) => {
+      console.log(error)
+    })
+  }
+
 
 }
