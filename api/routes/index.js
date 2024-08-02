@@ -1,6 +1,7 @@
 const express = require("express");
 const { allGames, addGame, oneGame, fullUpdateGame, partialUpdateGame, removeGame } = require("../controller/games.controller");
 const { partialUpdateOne, getOne } = require("../controller/publisher.controller");
+const { allReviews, oneReview } = require("../controller/reviews.controller");
 
 const router = express.Router();
 
@@ -20,7 +21,10 @@ router.route("/games/:gameId/publisher")
     .patch(partialUpdateOne);
 
 router.route("/games/:gameId/reviews")
-    .get(allReviews)
-    
+    .get(allReviews);
+
+router.route("/games/:gameId/reviews/:reviewId")
+    .get(oneReview)
+
 
 module.exports = router;
