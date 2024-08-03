@@ -33,24 +33,72 @@ export class Game {
 @Component({
   selector: 'app-games',
   standalone: true,
-  imports: [CommonModule, RouterLink
-  ],
+  imports: [CommonModule, RouterLink ],
   templateUrl: './games.component.html',
   styleUrl: './games.component.css'
 })
 export class GamesComponent implements OnInit{
   games: Game[] = [];
+  count = 5;
+  offset = 0;
+
+  countOptions: number[] = [];
+  totalPageNumber!: number;
 
   constructor(
     private gamesService: GamesService
-  ) {}
+  ) {
+    for(let i =0; i < 10; i++) {
+      this.countOptions[i] = i + 1;
+    }
+    
+  }
 
   ngOnInit(): void {
-    this.gamesService.allGames.subscribe(response => {
+    this._getAllGames(this.count, this.offset);
+  }
+
+  changeCount(event:Event) {
+   this.count = Number((event.target as HTMLInputElement).value);
+    this.offset = 0;
+    this.counter = 0;
+    this._getAllGames(this.count, this.offset);
+  }
+
+  _getAllGames(count:number, offset: number) {
+    this.gamesService.allGames(count, offset).subscribe(response => {
       this.games = response;
     }, (error) => {
       console.log(error)
     })
+  }
+
+  // paginate(offsetValue: number) {
+  //   this.offset = (offsetValue - 1) * this.count;
+  //   this._getAllGames(this.count, this.offset);
+  // }
+
+  counter = 0;
+
+  nextPage() {
+    if(!this.games.length) {
+      alert("Maximum point reached");
+      return;
+    }
+    this.counter++;
+    console.log(this.counter);
+    this.offset =this.counter * this.count;
+    this._getAllGames(this.count, this.offset);
+  }
+
+  previousPage() {
+    if(this.counter === 0) {
+      alert("cannot go to previous");
+      return
+    }
+    this.counter--;
+    this.offset = this.counter * this.count;
+    this._getAllGames(this.count, this.offset);
   }
 
 

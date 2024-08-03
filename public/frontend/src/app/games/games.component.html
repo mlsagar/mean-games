@@ -4,4 +4,15 @@
             <span>{{game.title}}</span>
         </a>
     </li>
+    <div>
+        <select (change)="changeCount($event)">
+            <option  *ngFor="let countOption of countOptions" [value]="countOption" [selected]="countOption == count">{{countOption}}</option>
+        </select>
+        <button (click)="previousPage()">
+            Previous
+        </button>
+        <button (click)="nextPage()">
+            Next
+        </button>
+    </div>
 </ul>

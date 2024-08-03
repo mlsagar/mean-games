@@ -14,8 +14,8 @@ export class GamesService {
     private http: HttpClient
   ) { }
 
-  get allGames():Observable<Game[]> {
-    return this.http.get<Game[]>(this.base_url + "/games");
+  allGames(count: number, offset= 0):Observable<Game[]> {
+    return this.http.get<Game[]>(this.base_url + "/games?offset=" + offset + "&count=" + count);
   }
 
   addGame(request: Game) {

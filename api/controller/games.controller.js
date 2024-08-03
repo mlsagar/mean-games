@@ -8,11 +8,11 @@ const allGames = function (request, response) {
     const maxLimit = parseInt(process.env.MAX_FIND_COUNT, process.env.RADIX_VALUE);
 
     if (request.query && request.query.offset) {
-        offset = parseInt(process.env.INITIAL_FIND_OFFSET, process.env.RADIX_VALUE)
+        offset = parseInt(request.query.offset, process.env.RADIX_VALUE)
     }
 
     if (request.query && request.query.count) {
-        count = parseInt(process.env.INITIAL_FINAL_COUNT, process.env.RADIX_VALUE)
+        count = parseInt(request.query.count, process.env.RADIX_VALUE)
     }
 
     if (isNaN(offset) || isNaN(count)) {
